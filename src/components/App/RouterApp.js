@@ -9,6 +9,10 @@ function RouterApp() {
   if(!token) {
     return <Login setToken={setToken} />
   }
+  // if (token === "-1"){
+  //   return (<div> <p> Error while Logging in </p> {Login} setToken={setToken} </div>)
+  // }
+
   return (  
     <Router>
            <div>

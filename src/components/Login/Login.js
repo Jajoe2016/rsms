@@ -16,28 +16,44 @@ async function loginUser(credentials) {
 export default function Login({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
-
+  const token = useState();
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
+    const data = await loginUser({ "username" : username, "password" : password });
+    if (data.token) setToken(data.token);
   }
+  console.log(`from login: `,token);
+  // if (token == "-1") {
+  //   return(
+  //     <div className="App">
+  //             <body className='App-body'>
+  //                 <p> Please Login </p>
+  //                 <form onSubmit={handleSubmit}>
+  //                     <p> <label> username: <input type="text" name="name onChange={e => setUserName(e.target.value)}" /> </label> </p>
+  //                     <p> </p>
+  //                     <p> <label> password: <input type="password" name="name onChange={e => setPassword(e.target.value)}" /> </label> </p>
+  //                     <p> <input type="submit" value="Login" /> </p>
+  //                       <p> Login Error. Please try again</p>
+  //                 </form>
+  //             </body>
+  //         </div>
+  //   )
+  // }
+
   return(
     <div className="App">
             <body className='App-body'>
                 <p> Please Login </p>
-                <form onSubmit={handleSubmit} action="" method="POST">
-                    <p> <label> username: <input type="text" name="name onChange={e => setUserName(e.target.value)}" /> </label> </p>
+                <form onSubmit={handleSubmit}>
+                    <p> <label> username: <input type="text" name="name" onChange={e => setUserName(e.target.value)} /> </label> </p>
                     <p> </p>
-                    <p> <label> password: <input type="password" name="name onChange={e => setPassword(e.target.value)}" /> </label> </p>
-                    <p> <input type="submit" value="Submit" /> </p>
+                    <p> <label> password: <input type="password" name="name" onChange={e => setPassword(e.target.value)} /> </label> </p>
+                    <p> <input type="submit" value="Login" /> </p>
                 </form>
             </body>
         </div>
   )
+
 }
 Login.propTypes = {
     setToken: PropTypes.func.isRequired

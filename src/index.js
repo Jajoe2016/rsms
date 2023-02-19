@@ -4,7 +4,7 @@ import './index.css';
 import Header from './components/HeaderFooter/Header';
 import Footer from './components/HeaderFooter/Footer';
 import RouterApp from './components/App/RouterApp'
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +14,7 @@ root.render(
     <Footer/>
     </div>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
