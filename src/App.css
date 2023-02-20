@@ -35,6 +35,18 @@
   color: burlywood;
 }
 
+.App-small-body {
+  background-color: black;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 2vmin);
+  color: burlywood;
+}
+
+
 .App-footer {
   background-color: goldenrod;
   min-height: 15vh;
@@ -56,8 +68,6 @@
   font-size: calc(8px + 2vmin);
   color: rgb(60, 255, 0);
 }
-
-
 
 .App-link {
   color: #61dafb;

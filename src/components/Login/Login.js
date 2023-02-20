@@ -21,28 +21,13 @@ export default function Login({ setToken }) {
     e.preventDefault();
     const data = await loginUser({ "username" : username, "password" : password });
     if (data.token) setToken(data.token);
+    else setToken('-1');
+    if (data.token != "-1") sessionStorage.setItem('tokenFromLocalStore', data.token);
   }
-  console.log(`from login: `,token);
-  // if (token == "-1") {
-  //   return(
-  //     <div className="App">
-  //             <body className='App-body'>
-  //                 <p> Please Login </p>
-  //                 <form onSubmit={handleSubmit}>
-  //                     <p> <label> username: <input type="text" name="name onChange={e => setUserName(e.target.value)}" /> </label> </p>
-  //                     <p> </p>
-  //                     <p> <label> password: <input type="password" name="name onChange={e => setPassword(e.target.value)}" /> </label> </p>
-  //                     <p> <input type="submit" value="Login" /> </p>
-  //                       <p> Login Error. Please try again</p>
-  //                 </form>
-  //             </body>
-  //         </div>
-  //   )
-  // }
 
   return(
     <div className="App">
-            <body className='App-body'>
+            <div className='App-body'>
                 <p> Please Login </p>
                 <form onSubmit={handleSubmit}>
                     <p> <label> username: <input type="text" name="name" onChange={e => setUserName(e.target.value)} /> </label> </p>
@@ -50,7 +35,7 @@ export default function Login({ setToken }) {
                     <p> <label> password: <input type="password" name="name" onChange={e => setPassword(e.target.value)} /> </label> </p>
                     <p> <input type="submit" value="Login" /> </p>
                 </form>
-            </body>
+            </div>
         </div>
   )
 

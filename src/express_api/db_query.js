@@ -13,7 +13,6 @@ const validateUserByUsername = (request, response) => {
   let tokenkey = "-1";
   pool.query('SELECT * FROM sms.users WHERE username = $1', [req_body.username], (error, results) => {
     if (error) {
-    //   throw error
     console.log(`query results error: `, error )
     }
     // console.log(`query results rows: `, results.rows)
@@ -28,6 +27,19 @@ const validateUserByUsername = (request, response) => {
   })
 }
 
+const createUser = (request, response) => {
+    const req_body = request.body;
+    console.log(`query req body:`, req_body);
+    
+    pool.query(`INSERT INTO sms.users(id, username, password, type, email) VALUES ($1, $2, $3, $4, $5)`,[req_body.id, req_body.username, req_body.password, req_body.type, req_body.email] ,(error, results) => {
+        if (error) {
+        console.log(`query results error: `, error )
+        }
+    response.send(JSON.stringify({ "code": 200, "message": `user added` }));
+    })
+  }
+
+
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
       if (error) {
@@ -36,17 +48,6 @@ const getUsers = (request, response) => {
       response.status(200).json(results.rows)
     })
   }
-
-const createUser = (request, response) => {
-  const { name, email } = request.body
-
-  pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(201).send(`User added with ID: ${results.insertId}`)
-  })
-}
 
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)

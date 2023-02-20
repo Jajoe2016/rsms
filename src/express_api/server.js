@@ -16,6 +16,7 @@ app.post('/', (req, res) => {
     res.end(JSON.stringify(response));
 });
 app.post('/login', function (req, res) { db_query.validateUserByUsername(req, res) })
+app.post('/createuser', function (req, res) { db_query.createUser(req, res) })
 
 // app.post('/login1', function (req, res) {
 //     const req_body = req.body;
