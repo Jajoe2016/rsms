@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './components/HeaderFooter/Header';
 import Footer from './components/HeaderFooter/Footer';
-import RouterApp from './components/App/RouterApp'
+import RouterApp from './components/App/RouterApp';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,6 +11,7 @@ root.render(
   <div>
     <Header/>
     <RouterApp/>
+    {/* <RouterApp_ui/> */}
     <Footer/>
     </div>
 );

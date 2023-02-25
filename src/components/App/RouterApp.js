@@ -7,6 +7,12 @@ import Login from '../Login/Login';
 import './App.css';
 // import Logout from '../Logout/Logout';
 
+//ui imports
+import Button from '@mui/material/Button';
+import { FormControl, FormLabel, ThemeProvider } from '@mui/material';
+import theme from '../../theme';
+
+
 function RouterApp() {
   const [token, setToken] = useState();
   const tokenFromLocalStore =  sessionStorage.getItem('tokenFromLocalStore');
@@ -23,16 +29,14 @@ function RouterApp() {
     if(token === undefined) {
       return ( <div>
         <Login setToken={setToken} />
-        <div className='App-small-body'>
-        </div>
         </div>)
     }
     if (token === "-1"){
         return (
          <div>
        <Login setToken={setToken} />
-       <div className='App-small-body'>
-       <p> Login Error</p>
+       <div className='App-small-body'> 
+       <p> Login Error. Invalid username or password</p>
        </div>
        </div>)
     }
@@ -61,7 +65,9 @@ function RouterApp() {
                  <Route exact path='/Operations' element={< Operations />}></Route>
           </Routes>
           <form onSubmit={handleLogout}>
-                    <p> <input type="submit" value="Logout" /> </p>
+          <ThemeProvider theme={theme}>
+    <Button variant="contained" sx={{mb: 6}} type="submit">Logout</Button>
+    </ThemeProvider>
                 </form>
           </div>
        </Router>
