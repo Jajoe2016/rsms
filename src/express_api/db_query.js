@@ -16,13 +16,13 @@ const validateUserByUsername = (request, response) => {
     console.log(`query results error: `, error )
     }
     // console.log(`query results rows: `, results.rows)
-
+    else {
     if ( results.rows.length > 0 ) {
         if (results.rows[0].username == req_body.username && results.rows[0].password == req_body.password){
             tokenkey = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
         }
     }
-
+  }
     response.send(JSON.stringify({ "code": 200, "token": `${tokenkey}` }));
   })
 }
@@ -83,29 +83,3 @@ module.exports = {
   updateUser,
   deleteUser,
 }
-
-
-
-// client.connect();
-
-// console.log(`query asked: ${query}`);
-
-// const response = client.query(query, (err, res) => {
-//     if (err) {
-//         console.error(err);
-//         // return err;
-//     }
-//     console.log('query succesful .... ');
-//     // console.log(res.rows);
-//     // return res.rows;
-    
-// });
-
-
-// client.end();
-// return response;
-// }
-
-// module.exports = {
-//     queryDb,
-// }

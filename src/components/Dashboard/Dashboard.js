@@ -1,10 +1,8 @@
 import React from 'react';
-
+import BasicMenu from './DashboardMenu';
 function Dashboard() {
   return(
-    <div>
-    <p> Hello - this is your Dashboard </p>
-    </div>
+    <BasicMenu/>
   );
 }
 
